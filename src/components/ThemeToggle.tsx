@@ -1,36 +1,45 @@
 import { useEffect, useState } from "react";
 
-type Theme = "dark" | "light";
+type Mode = "auto" | "dark" | "light";
 
-function getInitialTheme(): Theme {
-  const attr = document.documentElement.dataset.theme;
-  return attr === "light" ? "light" : "dark";
+function getInitialMode(): Mode {
+  const stored = localStorage.getItem("theme");
+  return stored === "dark" || stored === "light" ? stored : "auto";
+}
+
+function systemTheme(): "dark" | "light" {
+  return matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [mode, setMode] = useState<Mode>(getInitialMode);
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    if (mode === "auto") {
+      localStorage.removeItem("theme");
+      document.documentElement.dataset.theme = systemTheme();
+
+      const mq = matchMedia("(prefers-color-scheme: light)");
+      const onChange = () => {
+        document.documentElement.dataset.theme = systemTheme();
+      };
+      mq.addEventListener("change", onChange);
+      return () => mq.removeEventListener("change", onChange);
+    }
+
+    document.documentElement.dataset.theme = mode;
+    localStorage.setItem("theme", mode);
+  }, [mode]);
 
   return (
     <div className="theme-toggle mono" role="group" aria-label="Theme">
-      <button
-        type="button"
-        className={theme === "dark" ? "is-active" : ""}
-        aria-pressed={theme === "dark"}
-        onClick={() => setTheme("dark")}
-      >
+      <button type="button" className={mode === "auto" ? "is-active" : ""} aria-pressed={mode === "auto"} onClick={() => setMode("auto")}>
+        AUTO
+      </button>
+      <button type="button" className={mode === "dark" ? "is-active" : ""} aria-pressed={mode === "dark"} onClick={() => setMode("dark")}>
         DARK
       </button>
-      <button
-        type="button"
-        className={theme === "light" ? "is-active" : ""}
-        aria-pressed={theme === "light"}
-        onClick={() => setTheme("light")}
-      >
+      <button type="button" className={mode === "light" ? "is-active" : ""} aria-pressed={mode === "light"} onClick={() => setMode("light")}>
         LIGHT
       </button>
     </div>
