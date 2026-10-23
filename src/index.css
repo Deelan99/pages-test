@@ -1,14 +1,24 @@
+/*
+  Two print processes, two themes: dark mode reads as a cyanotype
+  blueprint (white lines on blue), light mode as a diazo whiteprint
+  (blue lines on white paper) — the same technical-drawing idiom, run
+  in reverse, rather than an arbitrary color inversion.
+*/
 :root {
-  --ink: #0f2944;
-  --ink-deep: #0a1c30;
-  --ink-panel: #122e4c;
+  --bg: #0f2944;
+  --bg-deep: #0a1c30;
+  --bg-panel: #122e4c;
   --line: rgba(238, 244, 251, 0.12);
   --line-strong: rgba(238, 244, 251, 0.22);
-  --paper: #eef4fb;
-  --muted: #90a8c2;
-  --dim: #5c7691;
-  --brass: #d9a441;
-  --brass-soft: rgba(217, 164, 65, 0.14);
+  --fg: #eef4fb;
+  --fg-muted: #90a8c2;
+  --fg-dim: #5c7691;
+  --accent: #d9a441;
+  --accent-soft: rgba(217, 164, 65, 0.14);
+  --accent-bg: #d9a441;
+  --on-accent: #1c1203;
+  --grid-dot: rgba(238, 244, 251, 0.05);
+  --nav-bg: rgba(15, 41, 68, 0.75);
 
   --font-display: "IBM Plex Sans", "Inter", sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
@@ -16,6 +26,44 @@
 
   --container: 72rem;
   color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f3f6fb;
+  --bg-deep: #e3ecf6;
+  --bg-panel: #ffffff;
+  --line: rgba(17, 38, 63, 0.12);
+  --line-strong: rgba(17, 38, 63, 0.24);
+  --fg: #11263f;
+  --fg-muted: #44617f;
+  --fg-dim: #6c86a1;
+  --accent: #8a5c10;
+  --accent-soft: rgba(138, 92, 16, 0.12);
+  --accent-bg: #c08a24;
+  --on-accent: #1c1203;
+  --grid-dot: rgba(17, 38, 63, 0.06);
+  --nav-bg: rgba(243, 246, 251, 0.78);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg: #f3f6fb;
+    --bg-deep: #e3ecf6;
+    --bg-panel: #ffffff;
+    --line: rgba(17, 38, 63, 0.12);
+    --line-strong: rgba(17, 38, 63, 0.24);
+    --fg: #11263f;
+    --fg-muted: #44617f;
+    --fg-dim: #6c86a1;
+    --accent: #8a5c10;
+    --accent-soft: rgba(138, 92, 16, 0.12);
+    --accent-bg: #c08a24;
+    --on-accent: #1c1203;
+    --grid-dot: rgba(17, 38, 63, 0.06);
+    --nav-bg: rgba(243, 246, 251, 0.78);
+    color-scheme: light;
+  }
 }
 
 * {
@@ -28,12 +76,13 @@ html {
 
 body {
   margin: 0;
-  background: var(--ink);
-  background-image: radial-gradient(circle, rgba(238, 244, 251, 0.05) 1px, transparent 1px);
+  background: var(--bg);
+  background-image: radial-gradient(circle, var(--grid-dot) 1px, transparent 1px);
   background-size: 28px 28px;
-  color: var(--paper);
+  color: var(--fg);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 h1, h2, h3 {
@@ -45,7 +94,7 @@ h1, h2, h3 {
 
 p {
   margin: 0;
-  color: var(--muted);
+  color: var(--fg-muted);
   line-height: 1.6;
 }
 
@@ -62,7 +111,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--brass);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
 }

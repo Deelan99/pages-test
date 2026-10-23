@@ -1,3 +1,5 @@
+import ThemeToggle from "./ThemeToggle";
+
 export default function Nav() {
   return (
     <header className="nav">
@@ -11,7 +13,10 @@ export default function Nav() {
         <a href="#toolkit">Toolkit</a>
         <a href="#contact">Contact</a>
       </nav>
-      <div className="nav__location mono">CENTURION, ZA</div>
+      <div className="nav__right">
+        <div className="nav__location mono">CENTURION, ZA</div>
+        <ThemeToggle />
+      </div>
     </header>
   );
 }
