@@ -3,17 +3,15 @@ export default function Nav() {
     <header className="nav">
       <a className="nav__brand" href="#top">
         <span className="nav__mark" aria-hidden="true" />
-        LUMEN ARC
+        DYLAN HARTLAND
       </a>
       <nav className="nav__links">
-        <a href="#network">Network</a>
-        <a href="#process">How it works</a>
-        <a href="#stations">Ground stations</a>
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#toolkit">Toolkit</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <div className="nav__status">
-        <span className="nav__status-dot" aria-hidden="true" />
-        NETWORK NOMINAL
-      </div>
+      <div className="nav__location mono">CENTURION, ZA</div>
     </header>
   );
 }

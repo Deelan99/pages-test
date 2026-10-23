@@ -1,0 +1,20 @@
+.doc-mark {
+  width: 100%;
+  height: auto;
+  max-width: 22rem;
+  overflow: visible;
+}
+
+.doc-mark__stamp {
+  transform-origin: 222px 150px;
+  animation: stamp-float 5s ease-in-out infinite;
+}
+
+@keyframes stamp-float {
+  0%, 100% {
+    transform: translate(222px, 150px) rotate(-14deg) translateY(0);
+  }
+  50% {
+    transform: translate(222px, 150px) rotate(-14deg) translateY(-6px);
+  }
+}

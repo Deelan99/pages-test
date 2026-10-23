@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
-import HowItWorks from "./components/HowItWorks";
-import NetworkStats from "./components/NetworkStats";
-import GroundStations from "./components/GroundStations";
-import CallToAction from "./components/CallToAction";
+import WorkHighlights from "./components/WorkHighlights";
+import Experience from "./components/Experience";
+import Toolkit from "./components/Toolkit";
+import Education from "./components/Education";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import "./App.css";
 
@@ -31,10 +32,11 @@ function App() {
       <Nav />
       <main>
         <Hero />
-        <HowItWorks />
-        <NetworkStats />
-        <GroundStations />
-        <CallToAction />
+        <WorkHighlights />
+        <Experience />
+        <Toolkit />
+        <Education />
+        <Contact />
       </main>
       <Footer />
     </>

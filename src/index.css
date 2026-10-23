@@ -1,20 +1,18 @@
 :root {
-  --bg: #05070d;
-  --bg-elevated: #080c16;
-  --bg-card: #0d1220;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.18);
-  --fg: #e8ecf4;
-  --fg-muted: #8591ab;
-  --fg-dim: #4d5770;
-  --amber: #ff6a3d;
-  --amber-soft: rgba(255, 106, 61, 0.14);
-  --cyan: #3dd6ff;
-  --cyan-soft: rgba(61, 214, 255, 0.12);
+  --ink: #0f2944;
+  --ink-deep: #0a1c30;
+  --ink-panel: #122e4c;
+  --line: rgba(238, 244, 251, 0.12);
+  --line-strong: rgba(238, 244, 251, 0.22);
+  --paper: #eef4fb;
+  --muted: #90a8c2;
+  --dim: #5c7691;
+  --brass: #d9a441;
+  --brass-soft: rgba(217, 164, 65, 0.14);
 
-  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-display: "IBM Plex Sans", "Inter", sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
   --container: 72rem;
   color-scheme: dark;
@@ -30,8 +28,10 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--fg);
+  background: var(--ink);
+  background-image: radial-gradient(circle, rgba(238, 244, 251, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--paper);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
@@ -45,7 +45,7 @@ h1, h2, h3 {
 
 p {
   margin: 0;
-  color: var(--fg-muted);
+  color: var(--muted);
   line-height: 1.6;
 }
 
@@ -62,7 +62,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--cyan);
+  outline: 2px solid var(--brass);
   outline-offset: 3px;
   border-radius: 2px;
 }

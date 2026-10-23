@@ -1,6 +1,6 @@
-# Lumen Arc
+# Dylan Hartland — Portfolio
 
-A fictional orbital solar-relay network, built as a React + Vite sample site to test GitHub Pages deployment.
+Personal portfolio site, built with React + Vite and deployed to GitHub Pages.
 
 ## Develop
 
