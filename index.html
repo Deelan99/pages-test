@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GitHub Pages Test</title>
+  <style>
+    :root { --bg: #0f172a; --fg: #e2e8f0; --accent: #38bdf8; --card: #1e293b; }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #f8fafc; --fg: #0f172a; --accent: #0369a1; --card: #ffffff; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg); color: var(--fg);
+    }
+    main {
+      background: var(--card); padding: 2rem 2.5rem; border-radius: 12px;
+      max-width: 32rem; width: calc(100% - 2rem);
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    }
+    h1 { margin-top: 0; color: var(--accent); }
+    button {
+      background: var(--accent); color: #fff; border: 0; border-radius: 8px;
+      padding: .6rem 1.1rem; font-size: 1rem; cursor: pointer;
+    }
+    button:hover { opacity: .9; }
+    #count, #time { font-variant-numeric: tabular-nums; }
+    small { opacity: .7; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>It works 🎉</h1>
+    <p>This page is being served by GitHub Pages.</p>
+    <p>Page loaded at <strong id="time"></strong></p>
+    <p>
+      <button id="btn">Clicked <span id="count">0</span> times</button>
+    </p>
+    <small>Edit <code>index.html</code>, commit, and refresh to see changes.</small>
+  </main>
+
+  <script>
+    document.getElementById("time").textContent = new Date().toLocaleString();
+    let n = 0;
+    document.getElementById("btn").addEventListener("click", () => {
+      document.getElementById("count").textContent = ++n;
+    });
+  </script>
+</body>
+</html>
